@@ -1,12 +1,12 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public float jumpf = 10;
-    public float travelTime = 1.6f;
-    public float screenSize = 14.0f;
+    public float travelTime = 4.0f;
+    public float screenSize = 18.0f;
     private float currT = 0.0f;
     private float posX = 0.0f;
     private float posY = 0.0f;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {                                //una vez cada frame
+	void FixedUpdate () {                                //una vez cada frame
 		/*/if(Input.GetKey(KeyCode.RightArrow))    //flecha derecha
         {
             this.GetComponent<Rigidbody2D>().AddForce(new Vector2(force, 0), ForceMode2D.Impulse);
@@ -39,6 +39,6 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }*/
         currT += (float) Time.deltaTime;
-        transform.position = new Vector2(currT*screenSize/travelTime + posX, posY); //debe demorar 1.6 seg entre el punto a y b v
+        transform.position = new Vector2(Time.deltaTime*screenSize/travelTime + posX, posY); //debe demorar 1.6 seg entre el punto a y b v
     }
 }
